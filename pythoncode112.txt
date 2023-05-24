@@ -1,0 +1,30 @@
+﻿112. You are given a date. Your task is to find what the day is on that date.
+Input A single line of input containing the space separated month, day and year, 
+respectively, in MM DD YYYY format.
+08 05 2015
+Output
+Output the correct day in capital letters.
+WEDNESDAY
+
+
+
+
+
+
+import datetime
+
+
+# Read the input date
+date_str = input("Enter the date (MM DD YYYY): ")
+month, day, year = map(int, date_str.split())
+
+
+# Create a datetime object for the input date
+date = datetime.datetime(year, month, day)
+
+
+# Get the weekday name
+weekday = date.strftime("%A").upper()
+
+
+print(weekday)

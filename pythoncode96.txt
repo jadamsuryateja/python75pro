@@ -1,0 +1,58 @@
+﻿96. Knight’s Tour Problem
+
+
+
+
+def is_valid_move(board, row, col):
+    if row >= 0 and row < len(board) and col >= 0 and col < len(board) and board[row][col] == -1:
+        return True
+    return False
+
+
+def print_solution(board):
+    for row in board:
+        for col in row:
+            print(str(col).rjust(2), end=' ')
+        print()
+
+
+def knight_tour(board, row, col, move_count, move_x, move_y):
+    if move_count == len(board) * len(board[0]):
+        print_solution(board)
+        return True
+
+
+    for k in range(8):
+        next_row = row + move_x[k]
+        next_col = col + move_y[k]
+        if is_valid_move(board, next_row, next_col):
+            board[next_row][next_col] = move_count
+            if knight_tour(board, next_row, next_col, move_count + 1, move_x, move_y):
+                return True
+            board[next_row][next_col] = -1
+
+
+    return False
+
+
+# Initialize the board with -1 indicating unvisited cells
+n = 8
+board = [[-1 for _ in range(n)] for _ in range(n)]
+
+
+# Possible knight moves
+move_x = [2, 1, -1, -2, -2, -1, 1, 2]
+move_y = [1, 2, 2, 1, -1, -2, -2, -1]
+
+
+# Starting position of the knight
+start_row = 0
+start_col = 0
+
+
+# Set the starting position as visited
+board[start_row][start_col] = 0
+
+
+# Solve the knight's tour problem
+knight_tour(board, start_row, start_col, 1, move_x, move_y)

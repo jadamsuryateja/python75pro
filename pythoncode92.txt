@@ -1,0 +1,14 @@
+﻿92. By using list comprehension, please write a program to print the list after 
+removing numbers which are divisible by 5 and 7 in 
+[12,24,35,70,88,120,155].
+
+
+
+
+my_list = [12, 24, 35, 70, 88, 120, 155]
+
+
+result = [num for num in my_list if num % 5 != 0 or num % 7 != 0]
+
+
+print(result)

@@ -1,0 +1,28 @@
+﻿116. Chess Promotion Problem
+
+
+
+
+
+
+def chess_promotion(pawn_position, promotion_piece):
+    """
+    Function to perform Chess Promotion by replacing a pawn at a given position with a promotion piece.
+    :param pawn_position: Position of the pawn to be promoted.
+    :param promotion_piece: Piece to be promoted to (Queen, Rook, Bishop, Knight).
+    :return: Updated chess board after promotion.
+    """
+    chess_board = ['Pawn'] * 8  # Initial chess board with 8 pawns
+    chess_board[pawn_position] = promotion_piece  # Replace the pawn with the promotion piece
+    return chess_board
+
+
+
+
+# Test the chess promotion
+pawn_position = 4  # Position of the pawn to be promoted (0 to 7)
+promotion_piece = 'Queen'  # Piece to be promoted to (Queen, Rook, Bishop, Knight)
+
+
+updated_chess_board = chess_promotion(pawn_position, promotion_piece)
+print(updated_chess_board)

@@ -1,0 +1,39 @@
+﻿113. Given 2 sets of integers, M and N, print their symmetric difference in 
+ascending order. The term symmetric difference indicates those values that 
+exist in either M or N but do not exist in both.
+Input
+The first line of input contains an integer, M.The second line contains M 
+space-separated integers.The third line contains an integer, N.The fourth 
+line contains N space-separated integers.
+4
+2 4 5 9
+4
+2 4 11 12
+Output
+Output the symmetric difference integers in ascending order, one per line.
+5
+9
+11
+12
+
+
+
+
+
+
+# Read the input sets
+M = int(input("Enter the size of set M: "))
+set_M = set(map(int, input("Enter the elements of set M: ").split()))
+
+
+N = int(input("Enter the size of set N: "))
+set_N = set(map(int, input("Enter the elements of set N: ").split()))
+
+
+# Find the symmetric difference
+symmetric_diff = sorted(set_M.symmetric_difference(set_N))
+
+
+# Print the symmetric difference
+for num in symmetric_diff:
+    print(num)
