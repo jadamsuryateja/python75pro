@@ -1,0 +1,11 @@
+﻿76.""' Please generate a random float where the value is between 10 and 100 
+using Python module"""
+
+
+import random
+
+
+random_float = random.uniform(10.0, 100.0)
+
+
+print(random_float)

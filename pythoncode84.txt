@@ -1,0 +1,47 @@
+﻿84. 0/1 Knapsack Problem
+
+
+def knapsack(max_weight, weights, values):
+    n = len(weights)
+
+
+    # Create a 2D table to store the maximum values
+    # that can be achieved for different weight capacities
+    dp = [[0 for _ in range(max_weight + 1)] for _ in range(n + 1)]
+
+
+    for i in range(1, n + 1):
+        for w in range(1, max_weight + 1):
+            if weights[i - 1] <= w:
+                # Take the maximum of including the current item or excluding it
+                dp[i][w] = max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w])
+            else:
+                # Item cannot be included, so take the previous maximum value
+                dp[i][w] = dp[i - 1][w]
+
+
+    # Backtrack to find the items included in the optimal solution
+    included_items = []
+    i, w = n, max_weight
+    while i > 0 and w > 0:
+        if dp[i][w] != dp[i - 1][w]:
+            included_items.append(i - 1)
+            w -= weights[i - 1]
+        i -= 1
+
+
+    # Return the maximum value and the items included
+    return dp[n][max_weight], included_items[::-1]
+
+
+
+
+# Example usage
+max_weight = 10
+weights = [2, 3, 4, 5]
+values = [3, 4, 5, 6]
+
+
+max_value, items = knapsack(max_weight, weights, values)
+print("Maximum value:", max_value)
+print("Items included:", items)
